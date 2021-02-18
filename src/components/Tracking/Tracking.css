@@ -1,0 +1,12 @@
+.progressHeading {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    color: darkgray;
+}
+
+.customerServiceButton {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}

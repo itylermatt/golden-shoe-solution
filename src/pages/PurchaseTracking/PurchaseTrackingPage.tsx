@@ -1,7 +1,16 @@
+import Tracking from '../../components/Tracking/Tracking';
+
 export default function PurchaseTrackingPage() {
     return(
         <div>
-            Purchase Tracking Page
+            <Tracking />
         </div>
     );
 }
+
+
+// In warehouse
+// In transit
+// Ready for delivery
+// Delivered
+// Signed By:

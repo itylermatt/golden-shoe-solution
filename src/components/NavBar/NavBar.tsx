@@ -88,7 +88,7 @@ function MenuAppBar(props:any) {
                                 open={open}
                                 onClose={handleClose}
                             >
-                                <MenuItem onClick={() => handleClose('/tracking')}>Tack Purchases</MenuItem>
+                                <MenuItem onClick={() => handleClose('/tracking')}>Track Purchases</MenuItem>
                                 <MenuItem onClick={() => handleClose('/returns')}>Returns</MenuItem>
                             </Menu>
                         </div>
