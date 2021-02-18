@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function MenuAppBar() {
     const classes = useStyles();
-    const [auth, setAuth] = React.useState(true);
+    const [auth, setAuth] = React.useState<boolean>(true);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
 
@@ -58,7 +58,7 @@ export default function MenuAppBar() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        Photos
+                        Golden Shoe
                     </Typography>
                     {auth && (
                         <div>

@@ -1,6 +1,6 @@
 import React from 'react';
-import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import MuiAlert, {AlertProps} from '@material-ui/lab/Alert';
+import {makeStyles, Theme} from '@material-ui/core/styles';
 import {IconButton} from "@material-ui/core";
 
 function Alert(props: AlertProps) {
@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     specialOffer: {
         width: '100%',
-
     }
 }));
 

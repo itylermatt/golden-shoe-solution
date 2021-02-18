@@ -5,7 +5,7 @@ import SnackBar from './components/SnackBar/SnackBar';
 import Tabs from './components/Tabs/Tabs';
 
 function App() {
-    const [tabs, setTabs] = useState(['men', 'women', 'kids']);
+    const [tabs] = useState<Array<string>>(['men', 'women', 'kids']);
 
   return (
     <div className="App">
