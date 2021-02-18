@@ -1,5 +1,4 @@
 import React, {useState, Fragment} from 'react';
-import NavBar from "../../components/NavBar/NavBar";
 import Tabs from "../../components/Tabs/Tabs";
 import SnackBar from "../../components/SnackBar/SnackBar";
 import './HomePage.css';
@@ -12,7 +11,6 @@ export default function HomePage(props: any){
 
     return (
         <Fragment>
-            <NavBar/>
             <Tabs tabs={tabs}/>
             <SnackBar/>
             <div className={'root'}>

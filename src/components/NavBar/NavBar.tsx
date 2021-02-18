@@ -11,6 +11,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import {withRouter} from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export default function MenuAppBar() {
+function MenuAppBar(props:any) {
     const classes = useStyles();
     const [auth, setAuth] = React.useState<boolean>(true);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -40,7 +41,8 @@ export default function MenuAppBar() {
         setAnchorEl(event.currentTarget);
     };
 
-    const handleClose = () => {
+    const handleClose = (link) => {
+        props.history.push(link);
         setAnchorEl(null);
     };
 
@@ -86,8 +88,8 @@ export default function MenuAppBar() {
                                 open={open}
                                 onClose={handleClose}
                             >
-                                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={() => handleClose('/tracking')}>Tack Purchases</MenuItem>
+                                <MenuItem onClick={() => handleClose('/returns')}>Returns</MenuItem>
                             </Menu>
                         </div>
                     )}
@@ -98,3 +100,5 @@ export default function MenuAppBar() {
 }
 
 // @TODO: make Golden Shoe fit in the center of the app bar
+
+export default withRouter(MenuAppBar);
