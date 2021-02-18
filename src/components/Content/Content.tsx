@@ -33,32 +33,14 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-/**
- * The example data is structured as follows:
- *
- * import image from 'path/to/image.jpg';
- * [etc...]
- *
- * const tileData = [
- *   {
- *     img: image,
- *     title: 'Image',
- *     author: 'author',
- *     featured: true,
- *   },
- *   {
- *     [etc...]
- *   },
- * ];
- */
-export default function AdvancedGridList() {
+export default function AdvancedGridList(props: {shoeSales: Array<any>}) {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
             <GridList cellHeight={200} spacing={1} className={classes.gridList}>
-                {tileData.map((tile: any, index: number) => (
-                    <GridListTile key={tile.img} cols={tile.featured ? 2 : 1} rows={tile.featured ? 2 : 1}>
+                {props.shoeSales.map((tile: any, index: number) => (
+                    <GridListTile key={index} cols={tile.featured ? 2 : 1} rows={tile.featured ? 2 : 1}>
                         <img src={tile.img} alt={tile.title}/>
                         <GridListTileBar
                             title={tile.title}
@@ -78,43 +60,3 @@ export default function AdvancedGridList() {
     );
 }
 
-
-const tileData = [
-    {
-        img: 'https://media.everlane.com/image/upload/c_fill,dpr_1.0,f_auto,g_face:center,q_auto,w_auto:100:1200/v1/i/2ee124b0_4e5f.jpg',
-        title: 'Image',
-        author: 'author',
-        featured: true,
-    },
-    {
-        img: 'https://media.everlane.com/image/upload/c_fill,dpr_1.0,f_auto,g_face:center,q_auto,w_auto:100:1200/v1/i/2ee124b0_4e5f.jpg',
-        title: 'Image',
-        author: 'author',
-        featured: true,
-    },
-    {
-        img: 'https://media.everlane.com/image/upload/c_fill,dpr_1.0,f_auto,g_face:center,q_auto,w_auto:100:1200/v1/i/2ee124b0_4e5f.jpg',
-        title: 'Image',
-        author: 'author',
-        featured: true,
-    },
-    {
-        img: 'https://media.everlane.com/image/upload/c_fill,dpr_1.0,f_auto,g_face:center,q_auto,w_auto:100:1200/v1/i/2ee124b0_4e5f.jpg',
-        title: 'Image',
-        author: 'author',
-        featured: true,
-    },
-    {
-        img: 'https://media.everlane.com/image/upload/c_fill,dpr_1.0,f_auto,g_face:center,q_auto,w_auto:100:1200/v1/i/2ee124b0_4e5f.jpg',
-        title: 'Image',
-        author: 'author',
-        featured: true,
-    },
-    {
-        img: 'https://media.everlane.com/image/upload/c_fill,dpr_1.0,f_auto,g_face:center,q_auto,w_auto:100:1200/v1/i/2ee124b0_4e5f.jpg',
-        title: 'Image',
-        author: 'author',
-        featured: true,
-    },
-
-]
