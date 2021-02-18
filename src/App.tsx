@@ -1,19 +1,14 @@
 import React, {useState} from 'react';
 import './App.css';
-import NavBar from './components/NavBar/NavBar';
-import SnackBar from './components/SnackBar/SnackBar';
-import Tabs from './components/Tabs/Tabs';
+import HomePage from './pages/HomePage/HomePage';
 
 function App() {
-    const [tabs] = useState<Array<string>>(['men', 'women', 'kids']);
 
-  return (
-    <div className="App">
-      <NavBar />
-      <Tabs tabs={tabs} />
-      <SnackBar />
-    </div>
-  );
+    return (
+        <div className="App">
+            <HomePage/>
+        </div>
+    );
 }
 
 export default App;
