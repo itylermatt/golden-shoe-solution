@@ -35,7 +35,6 @@ function InteractiveList(props) {
     useEffect(() => {
         axios.get('http://localhost:3001/purchases').then(response => {
             setPurchases(response.data.purchases);
-            console.log('purchases are: ', response);
         }).catch(e => console.log(e));
     }, []);
 

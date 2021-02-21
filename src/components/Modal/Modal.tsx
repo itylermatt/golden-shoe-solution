@@ -29,7 +29,6 @@ export default function TransitionsModal(props: { openModal: boolean, toggleModa
     const handleClose = () => {
         props.toggleModal(false);
     };
-    console.log('open Modal came with: ', props.openModal);
     return (
         <div>
             <Modal

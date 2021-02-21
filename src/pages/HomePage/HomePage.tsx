@@ -18,7 +18,6 @@ export default function HomePage(props: any) {
 
     useEffect(() => {
         axios.get('http://localhost:3001/').then((response: AxiosResponse<any>) => {
-            console.log('response came back as : ', response);
             setShoeSales(response.data.titleData);
             setCategories(response.data.categories);
             setCategoryItems(response.data.categoryItems);
