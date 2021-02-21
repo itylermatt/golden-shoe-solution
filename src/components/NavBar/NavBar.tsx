@@ -1,10 +1,10 @@
 import React from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -27,14 +27,14 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-function MenuAppBar(props:any) {
+function MenuAppBar(props: any) {
     const classes = useStyles();
-    const [auth, setAuth] = React.useState<boolean>(true);
+    // const [auth, setAuth] = React.useState<boolean>(true);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setAuth(event.target.checked);
+        props.setAuth(event.target.checked);
     };
 
     const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -50,19 +50,21 @@ function MenuAppBar(props:any) {
         <div className={classes.root}>
             <FormGroup>
                 <FormControlLabel
-                    control={<Switch checked={auth} onChange={handleChange} aria-label="login switch" />}
-                    label={auth ? 'Logout' : 'Login'}
+                    control={<Switch checked={props.auth} onChange={handleChange} aria-label="login switch"/>}
+                    label={props.auth ? 'Logout' : 'Login'}
                 />
             </FormGroup>
             <AppBar position="static">
                 <Toolbar>
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <MenuIcon />
+                        <HomeIcon onClick={() => {
+                            props.history.push('/')
+                        }}/>
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
                         Golden Shoe
                     </Typography>
-                    {auth && (
+                    {props.auth && (
                         <div>
                             <IconButton
                                 aria-label="account of current user"
@@ -71,7 +73,7 @@ function MenuAppBar(props:any) {
                                 onClick={handleMenu}
                                 color="inherit"
                             >
-                                <AccountCircle />
+                                <AccountCircle/>
                             </IconButton>
                             <Menu
                                 id="menu-appbar"
@@ -88,7 +90,7 @@ function MenuAppBar(props:any) {
                                 open={open}
                                 onClose={handleClose}
                             >
-                                <MenuItem onClick={() => handleClose('/tracking')}>Track Purchases</MenuItem>
+                                <MenuItem onClick={() => handleClose('/purchases')}>Track Purchases</MenuItem>
                                 <MenuItem onClick={() => handleClose('/returns')}>Returns</MenuItem>
                             </Menu>
                         </div>
@@ -98,7 +100,5 @@ function MenuAppBar(props:any) {
         </div>
     );
 }
-
-// @TODO: make Golden Shoe fit in the center of the app bar
 
 export default withRouter(MenuAppBar);

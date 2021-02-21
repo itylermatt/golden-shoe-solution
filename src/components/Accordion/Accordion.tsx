@@ -1,5 +1,5 @@
 import React from 'react';
-import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
+import {Theme, createStyles, makeStyles} from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -19,21 +19,21 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export default function SimpleAccordion(props: {category: string, subCategories: Array<any>}) {
+export default function SimpleAccordion(props: { category: string, subCategories: Array<any> }) {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
             <Accordion>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
+                    expandIcon={<ExpandMoreIcon/>}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
                     <Typography className={classes.heading}>{props.category}</Typography>
                 </AccordionSummary>
                 {props.subCategories.map((subCat, index) => {
-                    return(
+                    return (
                         <AccordionDetails key={index}>
                             <IconButton>
                                 <Typography>

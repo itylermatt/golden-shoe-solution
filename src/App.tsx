@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import HomePage from './pages/HomePage/HomePage';
 import ReturnsPage from './pages/ReturnsPage/ReturnsPage';
@@ -8,32 +8,36 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    useHistory
 } from 'react-router-dom';
 import NavBar from "./components/NavBar/NavBar";
+import PurchasesPage from "./pages/PurchasesPage/PurchasesPage";
 
 function App() {
+    const [authenticated, setAuthenticated] = useState<boolean>(true);
+
     return (
         <div className="App">
             <Router>
-                <NavBar/>
-                <Switch>
-                    <Route path={'/'} exact>
-                        <HomePage/>
-                    </Route>
+                <NavBar auth={authenticated} setAuth={setAuthenticated}/>
+                <Route path={'/'} exact>
+                    <HomePage/>
+                </Route>
+                {authenticated ? <Switch>
                     <Route path={'/returns'} exact>
                         <ReturnsPage/>
                     </Route>
-                    <Route path={'/tracking'} exact>
+                    <Route path={'/purchases/tracking'} exact>
                         <PurchaseTrackingPage/>
                     </Route>
-
-
-                </Switch>
+                    <Route path={'/purchases'} exact>
+                        <PurchasesPage/>
+                    </Route>
+                </Switch> : <div>Please Log In</div>}
             </Router>
         </div>
     );
 }
 
 export default App;
-// @TODO: remove material-ui/icons if not being used
+
+// @todo: if time permits add redux for state management or use Context API (no to prop drilling on this one)

@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, Theme, createStyles, withStyles } from '@material-ui/core/styles';
+import {makeStyles, Theme, createStyles, withStyles} from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -9,7 +9,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import VideoLabelIcon from '@material-ui/icons/VideoLabel';
 import StepConnector from '@material-ui/core/StepConnector';
-import { StepIconProps } from '@material-ui/core/StepIcon';
+import {StepIconProps} from '@material-ui/core/StepIcon';
 
 const QontoConnector = withStyles({
     alternativeLabel: {
@@ -59,7 +59,7 @@ const useQontoStepIconStyles = makeStyles({
 
 function QontoStepIcon(props: StepIconProps) {
     const classes = useQontoStepIconStyles();
-    const { active, completed } = props;
+    const {active, completed} = props;
 
     return (
         <div
@@ -67,7 +67,7 @@ function QontoStepIcon(props: StepIconProps) {
                 [classes.active]: active,
             })}
         >
-            {completed ? <Check className={classes.completed} /> : <div className={classes.circle} />}
+            {completed ? <Check className={classes.completed}/> : <div className={classes.circle}/>}
         </div>
     );
 }
@@ -121,12 +121,12 @@ const useColorlibStepIconStyles = makeStyles({
 
 function ColorlibStepIcon(props: StepIconProps) {
     const classes = useColorlibStepIconStyles();
-    const { active, completed } = props;
+    const {active, completed} = props;
 
     const icons: { [index: string]: React.ReactElement } = {
-        1: <SettingsIcon />,
-        2: <GroupAddIcon />,
-        3: <VideoLabelIcon />,
+        1: <SettingsIcon/>,
+        2: <GroupAddIcon/>,
+        3: <VideoLabelIcon/>,
     };
 
     return (

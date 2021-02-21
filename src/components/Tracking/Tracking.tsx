@@ -1,5 +1,5 @@
 import React from 'react';
-import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
+import {Theme, createStyles, makeStyles} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import './Tracking.css';
 import Stepper from '../../components/Stepper/Stepper';
@@ -24,7 +24,7 @@ export default function SimplePaper() {
 
     return (
         <div className={classes.root}>
-            <Paper elevation={3} >
+            <Paper elevation={3}>
                 <div>
                     <h2>ORDER NUMBER: 326783234</h2>
                 </div>
@@ -34,7 +34,7 @@ export default function SimplePaper() {
                 </div>
                 <br/><br/><br/><br/>
                 <div>
-                    <Stepper />
+                    <Stepper/>
                 </div>
                 <br/><br/><br/><br/><br/>
                 <div className={'customerServiceButton'}>

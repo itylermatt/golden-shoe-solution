@@ -6,6 +6,9 @@ import Accordion from '../../components/Accordion/Accordion';
 import Content from '../../components/Content/Content';
 import Card from '../../components/Card/Card';
 import axios, {AxiosResponse} from 'axios';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import FacebookIcon from '@material-ui/icons/Facebook';
 
 export default function HomePage(props: any) {
     const [tabs] = useState<Array<string>>(['men', 'women', 'kids']);
@@ -32,7 +35,7 @@ export default function HomePage(props: any) {
                         {
                             categories.map((category, index) => {
                                 const tempItems: Array<any> = [];
-                                categoryItems.forEach(item => category===item.type? tempItems.push(item): null);
+                                categoryItems.forEach(item => category === item.type ? tempItems.push(item) : null);
                                 return (
                                     <Accordion category={category} subCategories={tempItems} key={index}/>
                                 )
@@ -49,7 +52,14 @@ export default function HomePage(props: any) {
                     }
                 </div>
                 <div className={'footer'}>
-                    <div>Contact Us</div>
+                    <div>
+                        Contact Us
+                        <div>
+                            <InstagramIcon/>
+                            <TwitterIcon/>
+                            <FacebookIcon/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </Fragment>

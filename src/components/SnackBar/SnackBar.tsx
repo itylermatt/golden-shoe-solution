@@ -30,5 +30,3 @@ export default function CustomizedAlert() {
         </div>
     );
 }
-
-// @todo: change this to just an Alert Element Name

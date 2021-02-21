@@ -1,12 +1,12 @@
 import React from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import {makeStyles, Theme, createStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
-import { red } from '@material-ui/core/colors';
+import {red} from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export default function RecipeReviewCard(props: {shoeSale: any }) {
+export default function RecipeReviewCard(props: { shoeSale: any }) {
     const classes = useStyles();
 
     return (
@@ -52,7 +52,7 @@ export default function RecipeReviewCard(props: {shoeSale: any }) {
                 }
                 action={
                     <IconButton aria-label="settings">
-                        <MoreVertIcon />
+                        <MoreVertIcon/>
                     </IconButton>
                 }
                 title={props.shoeSale.name}
@@ -65,10 +65,10 @@ export default function RecipeReviewCard(props: {shoeSale: any }) {
             />
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
+                    <FavoriteIcon/>
                 </IconButton>
                 <IconButton aria-label="share">
-                    <ShareIcon />
+                    <ShareIcon/>
                 </IconButton>
             </CardActions>
 

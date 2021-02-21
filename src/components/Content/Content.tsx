@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export default function AdvancedGridList(props: {shoeSales: Array<any>}) {
+export default function AdvancedGridList(props: { shoeSales: Array<any> }) {
     const classes = useStyles();
 
     return (

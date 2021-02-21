@@ -1,20 +1,14 @@
-import React from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import React, {useEffect, useState} from 'react';
+import {makeStyles, Theme, createStyles} from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
-import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import FolderIcon from '@material-ui/icons/Folder';
-import DeleteIcon from '@material-ui/icons/Delete';
+import {withRouter} from 'react-router-dom';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -31,18 +25,19 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-function generate(element: React.ReactElement) {
-    return [0, 1, 2].map((value) =>
-        React.cloneElement(element, {
-            key: value,
-        }),
-    );
-}
+function InteractiveList(props) {
 
-export default function InteractiveList() {
     const classes = useStyles();
     const [dense, setDense] = React.useState(false);
     const [secondary, setSecondary] = React.useState(false);
+    const [purchases, setPurchases] = useState<any>([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/purchases').then(response => {
+            setPurchases(response.data.purchases);
+            console.log('purchases are: ', response);
+        }).catch(e => console.log(e));
+    }, []);
 
     return (
         <div className={classes.root}>
@@ -53,21 +48,24 @@ export default function InteractiveList() {
                     </Typography>
                     <div className={classes.demo}>
                         <List dense={dense}>
-                            {generate(
-                                <div>
-                                    <ListItem>
-                                        <ListItemText
-                                            primary="Single-line item"
-                                            secondary={secondary ? 'Secondary text' : null}
-                                        />
-                                        <ListItemSecondaryAction>
-                                            <IconButton edge="end" aria-label="delete">
-                                                <Typography> 2 days ago </Typography>
-                                            </IconButton>
-                                        </ListItemSecondaryAction>
-                                    </ListItem>
-                                </div>
-                            )}
+                            {purchases.map((purchase, index) => {
+                                return (
+                                    <div key={index}>
+                                        <IconButton onClick={() => props.history.push('/purchases/tracking')}
+                                                    style={{width: '100vw', borderRadius: 0}}>
+                                            <ListItem style={{width: '100vw'}}>
+                                                <ListItemText
+                                                    primary={purchase.item}
+                                                    secondary={secondary ? purchase.by : null}
+                                                />
+                                                <ListItemSecondaryAction>
+                                                    <Typography> {purchase.date} </Typography>
+                                                </ListItemSecondaryAction>
+                                            </ListItem>
+                                        </IconButton>
+                                    </div>
+                                );
+                            })}
                         </List>
                     </div>
                 </Grid>
@@ -75,3 +73,5 @@ export default function InteractiveList() {
         </div>
     );
 }
+
+export default withRouter(InteractiveList);

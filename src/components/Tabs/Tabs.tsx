@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function CenteredTabs(props:{tabs: Array<string>}) {
+export default function CenteredTabs(props: { tabs: Array<string> }) {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -28,7 +28,7 @@ export default function CenteredTabs(props:{tabs: Array<string>}) {
                 centered
             >
                 {props.tabs.map((tab: string, index: number) => {
-                    return <Tab key={index} label={tab} />
+                    return <Tab key={index} label={tab}/>
                 })}
             </Tabs>
         </Paper>
